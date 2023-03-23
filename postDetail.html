@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PostDetail</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <header class="main">
+    <div id="topBar">
+      <p id="topBar-left-text">HELLO JAVA!</p>
+      <div id="topBar-right">
+        <p id="topBar-right-text">멤버리스트</p>
+        <button onclick="location.href = 'register1.html';" class="button">
+          마이페이지
+        </button>
+        <button onclick="location.href = 'register1.html';" class="button">
+          로그아웃
+        </button>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div class="main comment-section">
+      <div class="posting-box" id="posting-box-title">
+        <p>댓글 남기기</p>
+        <form id="comment-form">
+          <textarea
+            id="comment-input"
+            placeholder="댓글을 입력하세요..."
+          ></textarea>
+          <button id="comment-button" type="submit">작성</button>
+        </form>
+      </div>
+
+      <div id="comment-list">
+        <!-- 댓글이 여기에 표시됩니다. -->
+      </div>
+    </div>
+    <script src="js/postDetail.js"></script>
+  </body>
+</html>
