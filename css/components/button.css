@@ -4,3 +4,7 @@
   border: none;
   color: aliceblue;
 }
+
+button:hover {
+  background-color: darkblue;
+}
