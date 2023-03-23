@@ -6,7 +6,6 @@ fetch("post.json")
     posts = data;
     const textList = document.getElementById("mainPage-countOfText");
     textList.innerText = "전체 글 " + posts.length + "개";
-
     updatePagination(posts);
   })
   .catch((error) => {
@@ -25,9 +24,9 @@ function renderPosts(posts) {
     const li = document.createElement("li");
     li.classList.add("my-list-item");
     li.innerHTML = `
-        <div id="my-list-item-title">
-            <p class="title">${item.title}</p>
-        </div>
+        <a href="postDetail.html?title=${encodeURIComponent(item.title)}">${
+      item.title
+    }</a>
         <div id="my-list-item-except-title">
             <p class="author">${item.author}</p>
             <p class="date">${item.date}</p>
