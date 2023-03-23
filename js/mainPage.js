@@ -1,20 +1,20 @@
 // JSON 데이터 가져오기
-const data = [];
-for (let i = 1; i <= 48; i++) {
-  data.push({
-    title: `제목${i}`,
-    author: `작성자${i}`,
-    date: "2022-03-21",
-    views: "0",
-  });
-}
+var posts = [];
+fetch("post.json")
+  .then((response) => response.json())
+  .then((data) => {
+    posts = data;
+    const textList = document.getElementById("mainPage-countOfText");
+    textList.innerText = "전체 글 " + posts.length + "개";
 
-const textList = document.getElementById("mainPage-countOfText");
-textList.innerText = "전체 글" + data.length + "개";
+    updatePagination(posts);
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 let currentPage = 1;
 const postsPerPage = 10;
-const totalPosts = data.length;
 
 // html 작성후 삽입
 function renderPosts(posts) {
@@ -45,7 +45,7 @@ function renderPosts(posts) {
 function getPosts() {
   const start = (currentPage - 1) * postsPerPage;
   const end = start + postsPerPage;
-  return data.slice(start, end);
+  return posts.slice(start, end);
 }
 
 function updatePagination() {
@@ -63,6 +63,7 @@ function renderPageNumbers() {
   const pageNumContainer = document.getElementById("page-numbers");
   pageNumContainer.innerHTML = "";
 
+  const totalPosts = posts.length;
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   for (let i = 1; i <= totalPages; i++) {
