@@ -12,9 +12,6 @@ fetch("post.json")
     console.error(error);
   });
 
-let currentPage = 1;
-const postsPerPage = 10;
-
 // html 작성후 삽입
 function renderPosts(posts) {
   const textList = document.getElementById("mainPage-text-list");
@@ -40,6 +37,8 @@ function renderPosts(posts) {
 }
 
 // 버튼 동작
+let currentPage = 1;
+const postsPerPage = 10;
 
 function getPosts() {
   const start = (currentPage - 1) * postsPerPage;
