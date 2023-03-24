@@ -79,6 +79,3 @@ function renderPageNumbers() {
     pageNumContainer.appendChild(pageNumButton);
   }
 }
-
-// 초기 게시글 렌더링
-updatePagination();

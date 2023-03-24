@@ -1,4 +1,4 @@
-const titleRegex = /^\s*\S+\s*$/;
+const titleRegex = /^\s*[\S\s]+\s*$/;
 const contentRegex = /^[\s\S]{3,1000}$/;
 
 document
