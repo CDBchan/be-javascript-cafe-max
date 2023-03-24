@@ -2,23 +2,39 @@
 const commentForm = document.getElementById("comment-form");
 const commentInput = document.getElementById("comment-input");
 const commentList = document.getElementById("comment-list");
+const countOfcomment = document.getElementById("count-of-comment");
+var comment = 0;
+
+setCountOfComment();
 
 commentForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   const commentText = commentInput.value.trim();
 
+  countOfcomment.textContent = "댓글 " + comment + "개";
   if (commentText) {
+    // commentText 변수가 존재하며 빈 문자열이 아닐때
     const commentElement = document.createElement("div");
-    commentElement.classList.add("comment");
+    commentElement.classList.add("posting-box");
+    commentElement.id = "comment";
     commentElement.textContent = commentText;
     commentList.appendChild(commentElement);
     commentInput.value = "";
+    addComment();
+    setCountOfComment();
   }
 });
 
-//postDetail 의 content 설정
+function addComment() {
+  comment++; // 댓글 개수를 1 증가시킴
+}
 
+function setCountOfComment() {
+  countOfcomment.textContent = "댓글 " + comment + "개"; // 댓글 개수를 업데이트함
+}
+
+//postDetail 의 content 설정
 var posts = [];
 fetch("post.json")
   .then((response) => response.json())
