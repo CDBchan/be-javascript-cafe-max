@@ -12,6 +12,22 @@ fetch("post.json")
     console.error(error);
   });
 
+// 버튼 동작
+let currentPage = 1;
+const postsPerPage = 10;
+
+function updatePagination() {
+  const posts = getPosts();
+  renderPosts(posts);
+  renderPageNumbers();
+}
+
+function getPosts() {
+  const start = (currentPage - 1) * postsPerPage;
+  const end = start + postsPerPage;
+  return posts.slice(start, end);
+}
+
 // html 작성후 삽입
 function renderPosts(posts) {
   const textList = document.getElementById("mainPage-text-list");
@@ -36,27 +52,7 @@ function renderPosts(posts) {
   });
 }
 
-// 버튼 동작
-let currentPage = 1;
-const postsPerPage = 10;
-
-function getPosts() {
-  const start = (currentPage - 1) * postsPerPage;
-  const end = start + postsPerPage;
-  return posts.slice(start, end);
-}
-
-function updatePagination() {
-  const posts = getPosts();
-  renderPosts(posts);
-  renderPageNumbers();
-}
-
-function goToPage(pageNumber) {
-  currentPage = pageNumber;
-  updatePagination();
-}
-
+// 왼쪽하단 페이지 버튼 삽입
 function renderPageNumbers() {
   const pageNumContainer = document.getElementById("page-numbers");
   pageNumContainer.innerHTML = "";
@@ -77,4 +73,9 @@ function renderPageNumbers() {
 
     pageNumContainer.appendChild(pageNumButton);
   }
+}
+
+function goToPage(pageNumber) {
+  currentPage = pageNumber;
+  updatePagination();
 }
